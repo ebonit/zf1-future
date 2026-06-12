@@ -389,6 +389,16 @@ abstract class Zend_Server_Reflection_Function_Abstract
     }
 
     /**
+     * Retrieve the reflected function or method name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->_reflection->getName();
+    }
+
+    /**
      * Retrieve configuration parameters
      *
      * Values are retrieved by key from {@link $_config}. Returns null if no

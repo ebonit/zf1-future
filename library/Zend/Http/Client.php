@@ -1052,6 +1052,7 @@ class Zend_Http_Client
 
             $body = $this->_prepareBody();
             $headers = $this->_prepareHeaders();
+            $stream = null;
 
             // check that adapter supports streaming before using it
             if(is_resource($body) && !($this->adapter instanceof Zend_Http_Client_Adapter_Stream)) {
@@ -1086,6 +1087,11 @@ class Zend_Http_Client
             }
 
             if($this->config['output_stream']) {
+                if (!is_resource($stream)) {
+                    /** @see Zend_Http_Client_Exception */
+                    require_once 'Zend/Http/Client/Exception.php';
+                    throw new Zend_Http_Client_Exception('Unable to open response output stream');
+                }
                 $streamMetaData = stream_get_meta_data($stream);
                 if ($streamMetaData['seekable']) {
                     rewind($stream);

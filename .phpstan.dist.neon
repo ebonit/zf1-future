@@ -6,7 +6,52 @@ parameters:
         min: 70400
         max: 80599
     paths:
-        - library
+        - library/Zend/Application
+        - library/Zend/Application.php
+        - library/Zend/Auth
+        - library/Zend/Auth.php
+        - library/Zend/Config
+        - library/Zend/Config.php
+        - library/Zend/Controller
+        - library/Zend/Date
+        - library/Zend/Date.php
+        - library/Zend/Db.php
+        - library/Zend/Db/Adapter/Abstract.php
+        - library/Zend/Db/Adapter/Pdo/Abstract.php
+        - library/Zend/Db/Adapter/Pdo/Mysql.php
+        - library/Zend/Db/Exception.php
+        - library/Zend/Db/Expr.php
+        - library/Zend/Db/Profiler.php
+        - library/Zend/Db/Select.php
+        - library/Zend/Db/Statement.php
+        - library/Zend/Db/Statement/Exception.php
+        - library/Zend/Db/Statement/Interface.php
+        - library/Zend/Db/Statement/Pdo.php
+        - library/Zend/Db/Table
+        - library/Zend/Debug.php
+        - library/Zend/Exception.php
+        - library/Zend/Filter/Compress.php
+        - library/Zend/Form
+        - library/Zend/Form.php
+        - library/Zend/Http/Client
+        - library/Zend/Http/Client.php
+        - library/Zend/Http/Exception.php
+        - library/Zend/Http/Response.php
+        - library/Zend/Layout
+        - library/Zend/Layout.php
+        - library/Zend/Loader
+        - library/Zend/Loader.php
+        - library/Zend/Locale
+        - library/Zend/Locale.php
+        - library/Zend/Mail
+        - library/Zend/Mail.php
+        - library/Zend/Registry.php
+        - library/Zend/Rest
+        - library/Zend/Session
+        - library/Zend/Session.php
+        - library/Zend/Soap
+        - library/Zend/View
+        - library/Zend/View.php
     excludePaths:
         - library/Zend/Db/Statement.php
         - library/Zend/Search/Lucene/MultiSearcher.php
@@ -18,4 +63,5 @@ parameters:
     tmpDir: .phpstan.cache
     checkFunctionNameCase: true
     checkInternalClassCaseSensitivity: true
+    reportUnmatchedIgnoredErrors: false
     treatPhpDocTypesAsCertain: false

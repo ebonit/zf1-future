@@ -401,9 +401,9 @@ class Zend_Mail_Protocol_Imap
      * @return string|array escape literals, literals with newline ar returned
      *                      as array('{size}', 'string');
      */
-    public function escapeString($string)
+    public function escapeString($string, ...$strings)
     {
-        if (func_num_args() < 2) {
+        if (!$strings) {
             if (strpos($string, "\n") !== false) {
                 return ['{' . strlen($string) . '}', $string];
             } else {
@@ -411,8 +411,8 @@ class Zend_Mail_Protocol_Imap
             }
         }
         $result = [];
-        foreach (func_get_args() as $string) {
-            $result[] = $this->escapeString($string);
+        foreach (array_merge([$string], $strings) as $value) {
+            $result[] = $this->escapeString($value);
         }
         return $result;
     }

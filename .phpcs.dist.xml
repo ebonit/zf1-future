@@ -1,5 +1,52 @@
 <?xml version="1.0"?>
 <ruleset name="OpenMage" namespace="OpenMage\CS\Standard">
-    <file>library</file>
+    <!-- Local fork scope: components used by blacklist, payments and zadenteller. -->
+    <file>library/Zend/Application</file>
+    <file>library/Zend/Application.php</file>
+    <file>library/Zend/Auth</file>
+    <file>library/Zend/Auth.php</file>
+    <file>library/Zend/Config</file>
+    <file>library/Zend/Config.php</file>
+    <file>library/Zend/Controller</file>
+    <file>library/Zend/Date</file>
+    <file>library/Zend/Date.php</file>
+    <file>library/Zend/Db.php</file>
+    <file>library/Zend/Db/Adapter/Abstract.php</file>
+    <file>library/Zend/Db/Adapter/Pdo/Abstract.php</file>
+    <file>library/Zend/Db/Adapter/Pdo/Mysql.php</file>
+    <file>library/Zend/Db/Exception.php</file>
+    <file>library/Zend/Db/Expr.php</file>
+    <file>library/Zend/Db/Profiler.php</file>
+    <file>library/Zend/Db/Select.php</file>
+    <file>library/Zend/Db/Statement.php</file>
+    <file>library/Zend/Db/Statement/Exception.php</file>
+    <file>library/Zend/Db/Statement/Interface.php</file>
+    <file>library/Zend/Db/Statement/Pdo.php</file>
+    <file>library/Zend/Db/Table</file>
+    <file>library/Zend/Debug.php</file>
+    <file>library/Zend/Exception.php</file>
+    <file>library/Zend/Filter/Compress.php</file>
+    <file>library/Zend/Form</file>
+    <file>library/Zend/Form.php</file>
+    <file>library/Zend/Http/Client</file>
+    <file>library/Zend/Http/Client.php</file>
+    <file>library/Zend/Http/Exception.php</file>
+    <file>library/Zend/Http/Response.php</file>
+    <file>library/Zend/Layout</file>
+    <file>library/Zend/Layout.php</file>
+    <file>library/Zend/Loader</file>
+    <file>library/Zend/Loader.php</file>
+    <file>library/Zend/Locale</file>
+    <file>library/Zend/Locale.php</file>
+    <file>library/Zend/Mail</file>
+    <file>library/Zend/Mail.php</file>
+    <file>library/Zend/Registry.php</file>
+    <file>library/Zend/Rest</file>
+    <file>library/Zend/Session</file>
+    <file>library/Zend/Session.php</file>
+    <file>library/Zend/Soap</file>
+    <file>library/Zend/View</file>
+    <file>library/Zend/View.php</file>
+
     <rule ref="PHPCompatibility" />
 </ruleset>

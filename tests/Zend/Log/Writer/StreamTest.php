@@ -105,7 +105,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
             $this->assertMatchesRegularExpression('/cannot be opened/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof ValueError);
-            $this->assertMatchesRegularExpression('/cannot be empty/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/cannot be empty|must not be empty/i', $e->getMessage());
         }
     }
 
@@ -138,7 +138,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
             $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertMatchesRegularExpression('/resource is not a valid/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/resource is not a valid|must be an open stream resource/i', $e->getMessage());
         }
     }
 
@@ -157,7 +157,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
             $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertMatchesRegularExpression('/resource is not a valid/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/resource is not a valid|must be an open stream resource/i', $e->getMessage());
         }
     }
 

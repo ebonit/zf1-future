@@ -654,6 +654,9 @@ class Zend_Http_Client_StaticTest extends TestCase
         try {
             $result = $client->request();
         } catch (Zend_Http_Client_Exception $e) {
+            if (strpos($e->getMessage(), 'php_network_getaddresses') !== false) {
+                $this->markTestSkipped('DNS resolution is not available');
+            }
             $this->fail('Unexpected exception was thrown');
         }
         // we can safely return until we can verify link is still active

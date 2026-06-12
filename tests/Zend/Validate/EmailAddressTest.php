@@ -645,6 +645,9 @@ class Zend_Validate_EmailAddressTest extends TestCase
         }
         $validator = new Zend_Validate_EmailAddress();
         $validator->setValidateMx(true);
+        if (!checkdnsrr(idn_to_ascii('faß.de'), 'MX')) {
+            $this->markTestSkipped('DNS MX lookup is not available');
+        }
         $this->assertTrue($validator->isValid('testmail@faß.de'));
     }
 

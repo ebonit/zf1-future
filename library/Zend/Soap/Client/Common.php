@@ -59,16 +59,16 @@ class Zend_Soap_Client_Common extends SoapClient
      * @param string $location
      * @param string $action
      * @param int    $version
-     * @param int    $one_way
+     * @param bool   $oneWay
+     * @param string|null $uriParserClass
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    function __doRequest($request, $location, $action, $version, $one_way = null)
+    public function __doRequest(string $request, string $location, string $action, int $version, bool $oneWay = false, ?string $uriParserClass = null): ?string
     {
-        if ($one_way === null) {
+        if (func_num_args() < 5) {
             return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version);
         } else {
-            return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version, $one_way);
+            return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version, $oneWay);
         }
     }
 

@@ -91,7 +91,9 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
                           xml_error_string(xml_get_error_code($this->_file)),
                           xml_get_current_line_number($this->_file),
                           $filename);
-            xml_parser_free($this->_file);
+            if (PHP_VERSION_ID < 80000) {
+                xml_parser_free($this->_file);
+            }
             require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception($ex);
         }
@@ -194,8 +196,10 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
                         $this->_tu = $this->_content;
                     }
 
-                    if (!empty($this->_content) || (!isset($this->_data[$this->_tuv][$this->_tu]))) {
-                        $this->_data[$this->_tuv][$this->_tu] = $this->_content;
+                    $tuv = (string) $this->_tuv;
+                    $tu  = (string) $this->_tu;
+                    if (!empty($this->_content) || !isset($this->_data[$tuv][$tu])) {
+                        $this->_data[$tuv][$tu] = $this->_content;
                     }
                     break;
                 default:

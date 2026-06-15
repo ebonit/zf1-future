@@ -228,6 +228,32 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
     }
 
     /**
+     * Prepare array values for recursive code generation.
+     *
+     * @param array $value
+     * @param int $depth
+     * @return array
+     */
+    protected function _prepareArrayValues(array $value, $depth = 0)
+    {
+        foreach ($value as $curKey => $curValue) {
+            if (!$curValue instanceof self) {
+                $curValue = new self(['value' => $curValue]);
+            }
+
+            $curValue->setArrayDepth($depth);
+
+            if (is_array($curValue->getValue())) {
+                $curValue->setValue($this->_prepareArrayValues($curValue->getValue(), $depth + 1));
+            }
+
+            $value[$curKey] = $curValue;
+        }
+
+        return $value;
+    }
+
+    /**
      * generate()
      *
      * @return string
@@ -246,18 +272,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
             $type = $this->_getAutoDeterminedType($value);
 
             if ($type == self::TYPE_ARRAY) {
-                $rii = new RecursiveIteratorIterator(
-                    $it = new RecursiveArrayIterator($value),
-                    RecursiveIteratorIterator::SELF_FIRST
-                    );
-                foreach ($rii as $curKey => $curValue) {
-                    if (!$curValue instanceof Zend_CodeGenerator_Php_Property_DefaultValue) {
-                        $curValue = new self(['value' => $curValue]);
-                        $rii->getSubIterator()->offsetSet($curKey, $curValue);
-                    }
-                    $curValue->setArrayDepth($rii->getDepth());
-                }
-                $value = $rii->getSubIterator()->getArrayCopy();
+                $value = $this->_prepareArrayValues($value);
             }
 
         }

@@ -539,6 +539,7 @@ class Zend_Http_Client
     protected function _setParameter($type, $name, $value)
     {
         $parray = [];
+        $name = (string) $name;
         $type = strtolower($type);
         switch ($type) {
             case 'get':

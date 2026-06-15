@@ -135,6 +135,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
                 $files = current($files);
             }
 
+            $files = (string) $files;
             $temp = [$files => [
                 'name'  => $files,
                 'error' => 1]];

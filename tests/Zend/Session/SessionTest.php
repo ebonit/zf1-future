@@ -91,10 +91,11 @@ class Zend_SessionTest extends TestCase
     {
         ini_set('session.save_path', $this->_savePath);
 
+        $expectedErrorReporting = PHP_VERSION_ID < 80400 ? E_ALL | E_STRICT : E_ALL;
         $this->assertSame(
-            E_ALL | E_STRICT,
-            error_reporting(E_ALL | E_STRICT),
-            'A test altered error_reporting to something other than E_ALL | E_STRICT'
+            $expectedErrorReporting,
+            error_reporting($expectedErrorReporting),
+            'A test altered error_reporting to something other than the expected level'
         );
 
         Zend_Session_Namespace::unlockAll();

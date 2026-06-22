@@ -349,7 +349,7 @@ class Zend_Barcode_Renderer_Image extends Zend_Barcode_Renderer_RendererAbstract
         $functionName = 'image' . $this->_imageType;
         call_user_func($functionName, $this->_resource);
         if (PHP_VERSION_ID < 80000) {
-            @imagedestroy($this->_resource);
+            $this->_resource = null;
         }
     }
 

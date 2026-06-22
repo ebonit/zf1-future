@@ -584,8 +584,8 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
 
         imagepng($img2, $img_file);
         if (PHP_VERSION_ID < 80000) {
-            imagedestroy($img);
-            imagedestroy($img2);
+            $img = null;
+            $img2 = null;
         }
     }
 

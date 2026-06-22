@@ -1028,11 +1028,13 @@ class Zend_Soap_Client
      */
     public function _doRequest(Zend_Soap_Client_Common $client, $request, $location, $action, $version, $one_way = null)
     {
+        $doRequest = new ReflectionMethod('SoapClient', '__doRequest');
+
         // Perform request as is
         if ($one_way == null) {
-            return call_user_func([$client,'SoapClient::__doRequest'], $request, $location, $action, $version);
+            return $doRequest->invoke($client, $request, $location, $action, $version);
         } else {
-            return call_user_func([$client,'SoapClient::__doRequest'], $request, $location, $action, $version, $one_way);
+            return $doRequest->invoke($client, $request, $location, $action, $version, $one_way);
         }
     }
 
